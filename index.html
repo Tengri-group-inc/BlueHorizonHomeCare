@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Horizon Home Care — Compassionate Home Care in New York</title>
+  <meta
+    name="description"
+    content="Blue Horizon Home Care is a family-owned, veteran-operated agency providing compassionate non-medical home care in New York — personal care, companionship, meal preparation, and recovery support."
+  />
+
+  <link rel="canonical" href="https://bluehorizonhomecare.org/" />
+  <link rel="icon" type="image/png" href="assets/blue-horizon-logo.png" />
+
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Blue Horizon Home Care — Compassionate Home Care in New York" />
+  <meta property="og:description" content="Family-owned, veteran-operated. Personalized non-medical home care that helps loved ones age in place — comfortably, joyfully, safely." />
+  <meta property="og:image" content="https://bluehorizonhomecare.org/assets/blue-horizon-logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bluehorizonhomecare.org/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts: Fraunces for warmth, Inter for body. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      /* Brand palette pulled from the logo. */
+      --navy: #0E3A5C;        /* deepest blue, primary ink for headings on light bg */
+      --navy-deep: #082338;   /* footer / overlays */
+      --blue: #1F6FAB;        /* primary accent / links / buttons */
+      --blue-light: #4DABE2;  /* hover / underline / highlights */
+      --sky: #E6F1F8;         /* soft tinted section bg */
+
+      /* Neutrals */
+      --bg: #F7FAFC;          /* page background — warm off-white with a hint of blue */
+      --surface: #FFFFFF;     /* cards / surfaces */
+      --ink: #0E2438;         /* body text */
+      --ink-soft: #4A5B6E;    /* secondary text */
+      --line: #D9E3EC;        /* hairlines / borders */
+
+      /* Type */
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      /* Layout */
+      --max-w: 1140px;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px rgba(14, 36, 56, 0.06), 0 1px 3px rgba(14, 36, 56, 0.04);
+      --shadow-md: 0 4px 16px rgba(14, 36, 56, 0.08), 0 2px 4px rgba(14, 36, 56, 0.04);
+      --shadow-lg: 0 16px 48px rgba(14, 36, 56, 0.12);
+    }
+
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { color: var(--blue-light); }
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      color: var(--navy);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5em;
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); }
+    h3 { font-size: 1.25rem; }
+    p { margin: 0 0 1em; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.4rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover {
+      background: var(--navy);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn-secondary:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+    .btn .icon { width: 18px; height: 18px; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 250, 252, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-logo { height: 44px; width: auto; }
+    .brand-name { /* visually hidden, screen readers only */
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: var(--navy);
+      font-weight: 500;
+      font-size: 0.97rem;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.97rem;
+    }
+    .nav-phone:hover { color: var(--blue); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4.5rem 0 5rem;
+      background:
+        radial-gradient(ellipse at top right, rgba(77, 171, 226, 0.18), transparent 55%),
+        radial-gradient(ellipse at bottom left, rgba(31, 111, 171, 0.10), transparent 60%),
+        var(--bg);
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--sky);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--ink-soft);
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      align-items: center;
+    }
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .hero-trust .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue-light);
+    }
+
+    /* Hero illustration — pure CSS "horizon" so we don't need a stock photo. */
+    .hero-art {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      max-width: 460px;
+      margin-left: auto;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #BDDDF1 0%, #E6F1F8 55%, #FFFFFF 100%);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .hero-art::before {
+      /* Sun / soft glow */
+      content: '';
+      position: absolute;
+      top: 14%;
+      right: 16%;
+      width: 28%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, #FFF6D6 0%, rgba(255, 246, 214, 0) 70%);
+    }
+    .hero-art-logo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 8% 9%;
+    }
+    .hero-art-logo img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(14, 58, 92, 0.18));
+    }
+    .hero-art-tag {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-art-tag .heart { color: #D14A6E; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 5rem 0; }
+    .section-head {
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .section-eyebrow {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* ---------- Services ---------- */
+    #services { background: var(--surface); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-light);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--sky);
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-card h3 { margin-bottom: 0.5rem; }
+    .service-card p {
+      color: var(--ink-soft);
+      margin: 0;
+      font-size: 0.97rem;
+    }
+
+    /* ---------- Why us ---------- */
+    #why {
+      background:
+        linear-gradient(180deg, var(--sky) 0%, var(--bg) 100%);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .why-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .why-points li {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .why-check {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .why-check svg { width: 22px; height: 22px; }
+    .why-points h3 { margin-bottom: 0.25rem; }
+    .why-points p { color: var(--ink-soft); margin: 0; }
+
+    /* ---------- How it works ---------- */
+    #process { background: var(--surface); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      counter-reset: step;
+    }
+    .process-step {
+      position: relative;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+    .process-step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      top: -18px;
+      left: 1.5rem;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      background: var(--surface);
+      padding: 0 0.5rem;
+      line-height: 1;
+    }
+    .process-step h3 { margin-top: 1rem; }
+    .process-step p { color: var(--ink-soft); margin: 0; }
+
+    /* ---------- Testimonial ---------- */
+    #testimonial {
+      background: var(--navy-deep);
+      color: #DBE7F0;
+      text-align: center;
+    }
+    #testimonial h2 { color: #fff; }
+    .quote {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+    .quote blockquote {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1.5;
+      font-style: italic;
+      margin: 0 0 1.5rem;
+      color: #fff;
+      font-weight: 400;
+    }
+    .quote cite {
+      font-style: normal;
+      color: var(--blue-light);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- Contact / Start Care ---------- */
+    #start-care {
+      background: var(--bg);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-top: 0; }
+    .contact-info .lead {
+      color: var(--ink-soft);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    .contact-list li {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+    }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--sky);
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon svg { width: 20px; height: 20px; }
+    .contact-list .label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.1rem;
+    }
+    .contact-list .value {
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .contact-list a.value:hover { color: var(--blue); }
+    .contact-list .sub {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      margin-top: 0.1rem;
+    }
+
+    /* Form */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-md);
+    }
+    .form-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.4rem;
+    }
+    .form-card .form-sub {
+      color: var(--ink-soft);
+      font-size: 0.97rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(31, 111, 171, 0.15);
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .form-card button[type="submit"] {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .form-fine {
+      margin: 0.85rem 0 0;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      background: var(--navy-deep);
+      color: #B6C7D6;
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand img {
+      width: 200px;
+      height: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.95rem;
+      color: #B6C7D6;
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      font-family: var(--sans);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+    .footer-col a {
+      color: #B6C7D6;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #8DA0B2;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero .container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-art { max-width: 380px; margin: 0 auto; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .nav-links, .nav-cta .btn { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .nav-cta { gap: 0.5rem; }
+      .nav.open .nav-links {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        background: var(--surface);
+        padding: 1rem 1.5rem 1.25rem;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow-md);
+      }
+      .nav.open .nav-links a {
+        padding: 0.65rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav.open .nav-links li:last-child a { border-bottom: 0; }
+
+      section { padding: 3.5rem 0; }
+      .hero { padding: 3rem 0 3.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* Mobile sticky call bar */
+    .mobile-call-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      background: var(--blue);
+      color: #fff;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 -4px 16px rgba(14, 36, 56, 0.15);
+      z-index: 40;
+    }
+    .mobile-call-bar a {
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    @media (max-width: 720px) {
+      .mobile-call-bar { display: block; }
+      body { padding-bottom: 60px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#top" class="brand" aria-label="Blue Horizon Home Care home">
+        <img src="assets/blue-horizon-logo.png" alt="Blue Horizon Home Care" class="brand-logo" />
+        <span class="brand-name">Blue Horizon Home Care</span>
+      </a>
+
+      <nav class="nav" id="main-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#testimonial">Testimonials</a></li>
+          <li><a href="#start-care">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="tel:+13477040583" class="nav-phone" aria-label="Call 347-704-0583">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            347-704-0583
+          </a>
+          <a href="#start-care" class="btn btn-primary">Start Care Now</a>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <span class="hero-eyebrow">Family-owned · Veteran-operated · Serving New York</span>
+          <h1>Compassionate care, <em>the Blue Horizon way.</em></h1>
+          <p class="hero-sub">
+            Personalized, non-medical home care that helps your loved one age in place — comfortably,
+            joyfully, and safely. We treat your family like our own.
+          </p>
+          <div class="hero-ctas">
+            <a href="tel:+13477040583" class="btn btn-primary">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call (347) 704-0583
+            </a>
+            <a href="#start-care" class="btn btn-secondary">Request a Free Consultation</a>
+          </div>
+          <div class="hero-trust">
+            <span><span class="dot"></span> Personalized care plans</span>
+            <span><span class="dot"></span> Vetted, compassionate caregivers</span>
+            <span><span class="dot"></span> Available 7 days a week</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-art-tag"><span class="heart">♥</span> Care that feels like family</div>
+          <div class="hero-art-logo">
+            <img src="assets/blue-horizon-logo.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Our Services</span>
+          <h2>Care designed around your loved one's day</h2>
+          <p class="section-sub">
+            Every plan is built from a thorough in-home assessment and tailored to the routines,
+            preferences, and dignity of the person we're caring for.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="M19 8v6"/></svg>
+            </div>
+            <h3>Personal Care</h3>
+            <p>Bathing, dressing, grooming, mobility support, and help with the daily activities that
+            keep life dignified and independent.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Companionship</h3>
+            <p>Conversation, shared meals, walks, hobbies, and the steady presence that turns a quiet
+            house back into a home.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18"/><path d="M5 11V7a7 7 0 0 1 14 0v4"/><path d="M3 11l1 7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l1-7"/></svg>
+            </div>
+            <h3>Meal Preparation</h3>
+            <p>Nutritious, familiar meals prepared at home — with attention to dietary needs, cultural
+            preferences, and the comfort of a favorite recipe.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Recovery &amp; Long-Term Care</h3>
+            <p>Steady support after a hospital stay or surgery, and reliable ongoing care for chronic
+            conditions — for as long as it's needed.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Respite Care</h3>
+            <p>Trusted, professional relief for family caregivers — a few hours or a few days, so the
+            people who give care can also rest.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12a8 8 0 0 1 16 0c0 7.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Specialized Assistance</h3>
+            <p>Customized care plans for complex situations — built collaboratively with the family
+            and reviewed as needs change.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY US ============ -->
+    <section id="why">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Why Blue Horizon</span>
+          <h2>The difference families feel from the first visit</h2>
+        </div>
+
+        <div class="why-grid">
+          <div>
+            <p style="font-size:1.1rem; color:var(--ink-soft); margin-bottom:1.5rem;">
+              We're a <strong>family-owned, veteran-operated</strong> agency built on a simple
+              promise: care begins with compassion. Aging in place shouldn't mean settling for less —
+              it should mean living more fully, on familiar terms, surrounded by what matters.
+            </p>
+            <p style="font-size:1.1rem; color:var(--ink-soft); margin:0;">
+              Every caregiver we send into a home is someone we'd send to our own family.
+            </p>
+          </div>
+
+          <ul class="why-points">
+            <li>
+              <span class="why-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <h3>Personalized from day one</h3>
+                <p>Every plan starts with an in-home assessment and a real conversation with the family.</p>
+              </div>
+            </li>
+            <li>
+              <span class="why-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <h3>Carefully vetted caregivers</h3>
+                <p>Background-checked, trained, and chosen for warmth as much as skill.</p>
+              </div>
+            </li>
+            <li>
+              <span class="why-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <h3>Flexible schedules</h3>
+                <p>A few hours a week, full days, or around-the-clock — we adjust as needs evolve.</p>
+              </div>
+            </li>
+            <li>
+              <span class="why-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div>
+                <h3>A real person on the phone</h3>
+                <p>You'll always reach a caring team member — not a phone tree — when something matters.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">How It Works</span>
+          <h2>Starting care is simpler than you might think</h2>
+          <p class="section-sub">Three steps. No pressure. We're here to listen first.</p>
+        </div>
+
+        <div class="process-steps">
+          <article class="process-step">
+            <h3>Tell us what's happening</h3>
+            <p>Call us or send a short note. We'll listen, answer your questions, and explain how
+            non-medical home care can help — with no obligation.</p>
+          </article>
+          <article class="process-step">
+            <h3>In-home assessment</h3>
+            <p>We meet your loved one at home to understand routines, preferences, and needs — then
+            put together a care plan that fits.</p>
+          </article>
+          <article class="process-step">
+            <h3>Care begins</h3>
+            <p>We match a caregiver thoughtfully, introduce them in person, and stay close. The plan
+            adjusts as needs change — that's the point.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIAL ============ -->
+    <section id="testimonial">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow" style="color: var(--blue-light);">What Families Say</span>
+        </div>
+        <div class="quote">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            The caregiver was the reason our neighbor could stay in her home and avoid a nursing
+            facility. She ensured hygiene, mobility, and emotional needs were met with love and
+            respect. She has been a bright light in our community — always smiling, always caring.
+          </blockquote>
+          <cite>— MICHELLE, NEW YORK</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ START CARE / CONTACT ============ -->
+    <section id="start-care">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-eyebrow">Start Care Now</span>
+            <h2>Let's talk about your family</h2>
+            <p class="lead">
+              Reach us by phone or fill out the form — a real person will respond, usually the
+              same day. No commitment, no pressure.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <div>
+                  <span class="label">Phone</span>
+                  <a class="value" href="tel:+13477040583">(347) 704-0583</a>
+                  <span class="sub">Also: <a href="tel:+18458338751">(845) 833-8751</a></span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <div>
+                  <span class="label">Email</span>
+                  <a class="value" href="mailto:info@bluehorizonhomecare.org">info@bluehorizonhomecare.org</a>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <div>
+                  <span class="label">Hours</span>
+                  <span class="value">Mon–Fri 11:00 – 18:30</span>
+                  <span class="sub">Sat 11:00 – 17:00 · Sun 12:30 – 16:30</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <div>
+                  <span class="label">Serving</span>
+                  <span class="value">New York &amp; surrounding areas</span>
+                  <span class="sub">228 Park Ave S PMB 530943, New York, NY 10003</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <form class="form-card"
+                action="mailto:info@bluehorizonhomecare.org"
+                method="post"
+                enctype="text/plain">
+            <h3>Request a free consultation</h3>
+            <p class="form-sub">Tell us a little, and we'll be in touch — usually the same day.</p>
+
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="field">
+                  <label for="first-name">First name</label>
+                  <input id="first-name" name="First name" type="text" required autocomplete="given-name" />
+                </div>
+                <div class="field">
+                  <label for="last-name">Last name</label>
+                  <input id="last-name" name="Last name" type="text" required autocomplete="family-name" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="Phone" type="tel" required autocomplete="tel" />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="Email" type="email" required autocomplete="email" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="relation">Care is for</label>
+                <select id="relation" name="Care is for">
+                  <option value="">Select…</option>
+                  <option>My parent</option>
+                  <option>My spouse</option>
+                  <option>Myself</option>
+                  <option>Another family member</option>
+                  <option>A friend / neighbor</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">What's going on? (optional)</label>
+                <textarea id="message" name="Message" placeholder="A few words about the situation — recent hospital stay, mobility, companionship, hours needed…"></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Send & start the conversation</button>
+              <p class="form-fine">
+                By submitting, you agree we may contact you about your inquiry. We never share your information.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/blue-horizon-logo.png" alt="Blue Horizon Home Care" />
+          <p>Family-owned, veteran-operated home care serving New York. Care that feels like family — because to us, it is.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why Blue Horizon</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#testimonial">Testimonials</a></li>
+            <li><a href="#start-care">Start Care Now</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+13477040583">(347) 704-0583</a></li>
+            <li><a href="tel:+18458338751">(845) 833-8751</a></li>
+            <li><a href="mailto:info@bluehorizonhomecare.org">info@bluehorizonhomecare.org</a></li>
+            <li>New York, NY</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Blue Horizon Home Care. All rights reserved.</span>
+        <span>Non-medical home care services.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky call bar -->
+  <div class="mobile-call-bar">
+    <a href="tel:+13477040583">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Tap to call (347) 704-0583
+    </a>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    (function () {
+      var nav = document.getElementById('main-nav');
+      var btn = document.getElementById('nav-toggle');
+      if (!nav || !btn) return;
+      btn.addEventListener('click', function () {
+        var isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      // Close menu after tapping a link on mobile
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Keep the footer year current
+    (function () {
+      var el = document.getElementById('year');
+      if (el) el.textContent = String(new Date().getFullYear());
+    })();
+  </script>
+
+</body>
+</html>

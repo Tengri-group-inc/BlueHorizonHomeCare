@@ -1139,11 +1139,17 @@
           </div>
 
           <form class="form-card"
-                action="mailto:info@bluehorizonhomecare.org"
-                method="post"
-                enctype="text/plain">
+                action="https://formsubmit.co/info@bluehorizonhomecare.org"
+                method="POST">
             <h3>Request a free consultation</h3>
             <p class="form-sub">Tell us a little, and we'll be in touch, usually the same day.</p>
+
+            <!-- FormSubmit configuration (hidden) -->
+            <input type="hidden" name="_subject" value="New consultation request — Blue Horizon Home Care">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://bluehorizonhomecare.org/?submitted=1">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-grid">
               <div class="form-row">

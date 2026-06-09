@@ -917,16 +917,16 @@
 
   <main id="top">
 
-    <!-- ============ THANK YOU BANNER (shown after form submission) ============ -->
+    <!-- ============ THANK YOU BANNER (shown after form submission or booking) ============ -->
     <div class="ty-banner" id="ty-banner" hidden role="status" aria-live="polite">
       <div class="container">
         <div class="ty-banner-inner">
           <div class="ty-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <div class="ty-text">
-            <strong>Thank you — your request is in.</strong>
-            <span>A real person will reach out shortly, usually the same day. If it's urgent, please call <a href="tel:+14453147766">(445) 314-7766</a>.</span>
+          <div class="ty-text" id="ty-text">
+            <strong id="ty-headline">Thank you — your request is in.</strong>
+            <span id="ty-body">A real person will reach out shortly, usually the same day. If it's urgent, please call <a href="tel:+14453147766">(445) 314-7766</a>.</span>
           </div>
           <button type="button" class="ty-close" id="ty-close" aria-label="Close thank-you message">&times;</button>
         </div>
@@ -1351,19 +1351,28 @@
       if (el) el.textContent = String(new Date().getFullYear());
     })();
 
-    // Thank-you banner after successful form submission
+    // Thank-you banner after successful form submission or calendar booking
     (function () {
       try {
         var params = new URLSearchParams(window.location.search);
-        if (params.get('submitted') === '1') {
+        var submitted = params.get('submitted') === '1';
+        var booked = params.get('booked') === '1';
+        if (submitted || booked) {
           var banner = document.getElementById('ty-banner');
-          if (banner) {
+          var headline = document.getElementById('ty-headline');
+          var body = document.getElementById('ty-body');
+          if (banner && headline && body) {
+            if (booked) {
+              headline.textContent = 'Your consultation is booked.';
+              body.innerHTML = 'A calendar invite is on its way to your email. We\'re looking forward to the conversation. If anything changes, call us at <a href="tel:+14453147766">(445) 314-7766</a>.';
+            }
             banner.hidden = false;
             banner.scrollIntoView({behavior: 'smooth', block: 'start'});
           }
           // Clean the URL so a refresh doesn't keep showing the banner
           if (window.history && window.history.replaceState) {
             params.delete('submitted');
+            params.delete('booked');
             var qs = params.toString();
             var newUrl = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
             window.history.replaceState({}, '', newUrl);

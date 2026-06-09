@@ -818,6 +818,68 @@
         scroll-behavior: auto !important;
       }
     }
+
+    /* ---------- Thank-you banner (post-form-submission) ---------- */
+    .ty-banner {
+      background: var(--sky);
+      border-bottom: 1px solid var(--line);
+      padding: 0.9rem 0;
+    }
+    .ty-banner-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .ty-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ty-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .ty-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      color: var(--navy);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .ty-text strong {
+      font-weight: 600;
+      font-size: 1.02rem;
+    }
+    .ty-text a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+    .ty-close {
+      flex-shrink: 0;
+      background: transparent;
+      border: 0;
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--ink-soft);
+      cursor: pointer;
+      padding: 0 0.3rem;
+    }
+    .ty-close:hover {
+      color: var(--navy);
+    }
+    @media (max-width: 600px) {
+      .ty-text { font-size: 0.88rem; }
+      .ty-text strong { font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
@@ -854,6 +916,22 @@
   </header>
 
   <main id="top">
+
+    <!-- ============ THANK YOU BANNER (shown after form submission) ============ -->
+    <div class="ty-banner" id="ty-banner" hidden role="status" aria-live="polite">
+      <div class="container">
+        <div class="ty-banner-inner">
+          <div class="ty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="ty-text">
+            <strong>Thank you — your request is in.</strong>
+            <span>A real person will reach out shortly, usually the same day. If it's urgent, please call <a href="tel:+14453147766">(445) 314-7766</a>.</span>
+          </div>
+          <button type="button" class="ty-close" id="ty-close" aria-label="Close thank-you message">&times;</button>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ HERO ============ -->
     <section class="hero">
@@ -1271,6 +1349,34 @@
     (function () {
       var el = document.getElementById('year');
       if (el) el.textContent = String(new Date().getFullYear());
+    })();
+
+    // Thank-you banner after successful form submission
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('submitted') === '1') {
+          var banner = document.getElementById('ty-banner');
+          if (banner) {
+            banner.hidden = false;
+            banner.scrollIntoView({behavior: 'smooth', block: 'start'});
+          }
+          // Clean the URL so a refresh doesn't keep showing the banner
+          if (window.history && window.history.replaceState) {
+            params.delete('submitted');
+            var qs = params.toString();
+            var newUrl = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+            window.history.replaceState({}, '', newUrl);
+          }
+        }
+        var close = document.getElementById('ty-close');
+        if (close) {
+          close.addEventListener('click', function () {
+            var b = document.getElementById('ty-banner');
+            if (b) b.hidden = true;
+          });
+        }
+      } catch (e) {}
     })();
   </script>
 
